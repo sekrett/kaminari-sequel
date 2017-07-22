@@ -9,8 +9,25 @@ RSpec.describe Kaminari::Sequel do
 
   describe 'Model' do
     subject { User }
-    it { should respond_to(:page) }
-    it { should respond_to(:default_per_page) }
-    it { should_not respond_to(:per) }
+    it { expect(subject).to respond_to(:page) }
+    it { expect(subject).to respond_to(:default_per_page) }
+    it { expect(subject).to respond_to(:max_per_page) }
+    it { expect(subject).not_to respond_to(:per) }
+  end
+
+  describe 'Dataset' do
+    subject { User.dataset }
+    it { expect(subject).to respond_to(:page) }
+    it { expect(subject).to respond_to(:default_per_page) }
+    it { expect(subject).to respond_to(:max_per_page) }
+    it { expect(subject).not_to respond_to(:per) }
+  end
+
+  describe 'Page' do
+    subject { User.page(1) }
+    it { expect(subject).to respond_to(:page) }
+    it { expect(subject).to respond_to(:default_per_page) }
+    it { expect(subject).to respond_to(:max_per_page) }
+    it { expect(subject).to respond_to(:per) }
   end
 end
