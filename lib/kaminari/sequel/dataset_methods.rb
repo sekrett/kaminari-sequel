@@ -18,7 +18,7 @@ module Kaminari
       end
 
       def total_count(_column_name = :all, _options = nil) #:nodoc:
-        @total_count ||= unlimited.unordered.count
+        unlimited.unordered.count
       end
 
       def size #:nodoc:
