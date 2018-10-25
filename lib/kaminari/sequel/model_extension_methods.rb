@@ -7,9 +7,9 @@ module Kaminari
   module Sequel
     module ModelExtensionMethods #:nodoc:
       extend ActiveSupport::Concern
-      include Kaminari::ConfigurationMethods
 
       module ClassMethods #:nodoc:
+        include Kaminari::ConfigurationMethods::ClassMethods
         include Kaminari::Sequel::PageMethod
 
         define_method(Kaminari.config.page_method_name) do |num|
